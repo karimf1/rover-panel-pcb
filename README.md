@@ -1,4 +1,4 @@
-# rover-panel-supervisor — precharge, K1 interlock and pack current for the rover power panel
+# rover-panel-pcb 
 
 The PCB was missing. It sits on
 four standoffs on the panel plate, between the shunt and the signal
@@ -31,8 +31,6 @@ The one claim the board is built to prove:
 
 ## 1. How the interlock works
 
-The full sheet is [docs/rover-panel-supervisor-schematic.pdf](docs/rover-panel-supervisor-schematic.pdf).
-
 The logic is four comparators, one AND gate and one D flip-flop. Every node
 that feeds the interlock is an open-collector output pulled up **to EN, not to
 5 V** — so the instant the board disarms, every one of them falls with it.
@@ -63,9 +61,6 @@ The K1 coil path is:
 `Q1` is on the low side. It can only *interrupt* that loop.
 
 ## 2. The design numbers
-
-`design/spec.py` holds every input, `design/calcs.py` derives the rest and
-`design/test_calcs.py` asserts the limits. Here is what they decided.
 
 ### Precharge threshold: a window, not a number
 
@@ -299,9 +294,6 @@ PASS  standoff + board + tallest mated connector fits the height params.py allow
 
 ## 6. <a name="before-ordering"></a>Before ordering
 
-**Seven facts to confirm against datasheets.** They were quoted from memory,
-and `test_calcs.py` prints this list on every run:
-
 1. K1's part number: its coil inrush, hold current and pickup voltage, and
    whether it has internal coil suppression. If it does not, add a
    TVS-limited freewheel path.
@@ -311,21 +303,6 @@ and `test_calcs.py` prints this list on every run:
 3. LM5165X: that its VIN absolute maximum is 70 V.
 4. L1: that its saturation current covers the PFM peak.
 5. INA228: that its I2C thresholds are independent of VS.
-6. SN74LVC1G74 DCT: its pin map (`lib/rover-panel-supervisor.kicad_sym`).
-7. NDT3055L / NDT2955: their RDS(on) at the gate drive used, and the SOT-223
-   pinout.
-
-**Three facts about the rover that nobody has measured.** Same status as the
-panel's load table:
-
-1. **ESC idle current.** 50 mA is assumed. At 21 V the precharge threshold
-   has 2.8 points of margin over what the bus can reach through R1. At 75 mA
-   of idle draw that margin is gone, and a low-pack power-up faults. If the
-   real figure is higher, lower the threshold or R1.
-2. **ESC bank capacitance.** 3–9 mF is assumed, and the timer is designed
-   over that whole range.
-3. **The K1 coil.** See the first `VERIFY` item.
-
 **Then:** order five boards, put an electronic load on the switched bus and a
 capacitor bank in place of the ESCs, and scope `CHG`, `TMR`, `K1_G` and the
 bus through every scenario in §2. The template is in
