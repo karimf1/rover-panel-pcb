@@ -300,7 +300,4 @@ PASS  standoff + board + tallest mated connector fits the height params.py allow
 3. LM5165X: that its VIN absolute maximum is 70 V.
 4. L1: that its saturation current covers the PFM peak.
 5. INA228: that its I2C thresholds are independent of VS.
-**Then:** order five boards, put an electronic load on the switched bus and a
-capacitor bank in place of the ESCs, and scope `CHG`, `TMR`, `K1_G` and the
-bus through every scenario in §2. The template is in
-[`measurements/`](measurements/).
+
