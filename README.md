@@ -165,10 +165,7 @@ PASS  dropping ARM clears FAULT and leaves everything off
 5. **The buck's pins are not in the 0.3 mm pack-voltage clearance class.** The
    LM5165's own pins are 0.22 mm apart. A 0.3 mm rule for them fails under the
    footprint itself, so the package sets that spacing.
-6. **Routing is searched for, not typed.** The plan said to reuse the
-   hand-routed generator from `sync-buck`. That generator is still here
-   (`kisch.py`, `kipcb.py`, `sexp.py`, `symlib.py`), but 106 parts do not
-   route by hand coordinates, so there is a router (§4).
+
 
 ## 4. The layout
 
