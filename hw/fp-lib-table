@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "rover-panel-supervisor")(type "KiCad")(uri "${KIPRJMOD}/lib/rover-panel-supervisor.pretty")(options "")(descr "Project footprints (none yet: every part uses a stock footprint)"))
+)
