@@ -213,5 +213,7 @@ None of that is trusted. **kicad-cli DRC with schematic parity is the judge.**
 
 ## 5. <a name="Fabrication (Sponsored by PCBWay)"></a>Fabrication (Sponsored by PCBWay)
 
+![Board](docs/img/fabtpcb.png)
+
 This board was fabricated by PCBWay (https://www.pcbway.com/orderonline.aspx) through their promotional program. Communication was quick: my questions to their representative were answered within one day. Once the order was confirmed I got an email with all the order details, such as tracking number and estimated arrival date. The PCB arrived sealed in a box, packed in foam rubber, so it reached me undamaged. The website is clear and intuitive to use, even for someone placing an order for the first time (like myself). The board itself is excellent. Every dimension matches the design, the exposed copper and pads line up cleanly with no misalignment, and the overall fabrication quality is top-notch. 
 
